@@ -8,28 +8,32 @@ body {
 	}
 
 header {
-		width: 95%;
+		width: 91%;
 		height: 40px;
 		background-color:#A5010A;
 		display: flex; 
 		z-index: 1;
-		margin: 0 auto;
+		position: fixed;
+		top: 0;
+		margin: 0 2%;
 	}
 
 nav {
-		width: 95%;
+		width: 91%;
 		height: auto;
-		margin: 0 auto;
+		margin: 0 2%;
 		background-color: #2e3830;
 		z-index: 1;
 		display: flex;
 		flex-flow: column wrap;
+		position: fixed;
+		top: 40;
 	}
 		
 main {	
 		width: 95%;
 		height: 100%;
-		margin: 0 auto;
+		margin: 115px auto 0px auto;
 		background-color: #F9EBBA;	
 		display: flex;
 		flex-flow: row wrap;
@@ -57,8 +61,6 @@ footer {
 		width: 91%;
 		margin: 0 2%;
 		background-color: #2e3830;
-		position: fixed;
-		bottom: 0;
 		color: white;
 	}
 
@@ -336,6 +338,7 @@ footer a:hover {
     main {
         flex-direction: row;
         flex-wrap: nowrap;
+	position: relative;
         top: 140px;
         width: 100%;
     }
@@ -360,12 +363,14 @@ footer a:hover {
         position: fixed;
         height: 100px;
         top: 0;
+	margin: 0 auto;
     }
     nav {
         width: 80%;
         height: 40px;
-        top: 100px;
         position: fixed;
+	top: 100px;
+	margin: 0 auto;
     }
 	nav a {
 		border-right: 1px solid #F5BC4E;
@@ -375,6 +380,8 @@ footer a:hover {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		position: fixed;
+		bottom: 0;
 	}
 	address {
 		padding: 10px;
