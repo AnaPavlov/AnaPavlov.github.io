@@ -1,0 +1,419 @@
+body {
+		box-sizing: border-box;
+		width: 95%;
+		height: auto;
+		margin: 0 auto;
+		background-image: url("../img/crvena.jpg");
+		font-size: 12px;
+	}
+
+header {
+		width: 95%;
+		height: 40px;
+		background-color:#A5010A;
+		display: flex; 
+		z-index: 1;
+		margin: 0 auto;
+	}
+
+nav {
+		width: 95%;
+		height: auto;
+		margin: 0 auto;
+		background-color: #2e3830;
+		z-index: 1;
+		display: flex;
+		flex-flow: column wrap;
+	}
+		
+main {	
+		width: 95%;
+		height: 100%;
+		margin: 0 auto;
+		background-color: #F9EBBA;	
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+section {
+		width: 100%;
+		background-color: #F9EBBA;
+		flex-wrap: wrap;
+	}
+
+aside {
+		width: 100%;
+		height: 100%;
+		background-color: #F6D381;
+		padding-bottom: 30px;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		flex-direction: row;
+	}
+
+
+footer {
+		width: 91%;
+		margin: 0 2%;
+		background-color: #2e3830;
+		position: fixed;
+		bottom: 0;
+		color: white;
+	}
+
+header img {
+		width: 30px;
+		height: 30px;
+		margin: 5px 10px;
+		padding-left: 10px;
+	}
+
+header h1 {
+		font-size: 3vw;
+		word-spacing: 0.1em;
+		letter-spacing: 0.03em;
+		color: white;
+		text-shadow:
+     	-1px -1px 0 #EDAA28,  
+     	 1px -1px 0 #EDAA28,
+      	-1px 1px 0 #EDAA28,
+      	 1px 1px 0 #EDAA28;
+	}
+
+nav ul {
+		padding: 0;	
+		margin: 0;
+		list-style-type: none;
+	}
+
+nav li {
+		margin: 0;
+		padding: 2px 0px;
+	}
+
+nav a {
+	text-decoration: none;
+	color: #F5BC4E;
+	font-weight: 600;
+	padding: 2px 22px;	
+	margin: 0;
+}
+
+
+#dropdown-content {
+	display: none;
+    position: absolute;
+}
+
+#dropdown-content a {
+	font-weight: lighter;
+	border: none;
+	width: 100%;
+}
+
+#dropdown-content li {
+   	text-decoration: none;
+   	display: block;
+   	background-color: #2e3830;
+   	text-align: justify;
+   	padding: 7px 0px;
+}
+
+nav a:hover {
+	background-color: #A5010A;
+	color: white;
+	transition: .06s ease-in-out;
+}
+
+#dropdown:hover #dropdown-content {
+	display: block;
+}
+
+
+section p {
+	padding: 0px 5px;
+	text-indent: 10px;
+	text-align: justify;
+	line-height: 1.1em;
+	}
+
+
+section h3 {
+	padding: 3px 0px;
+	color: #A5010B;
+	text-align: center;
+	font-weight: bolder;
+	word-spacing: 0.1em;
+	font-size: 1em;
+	text-shadow:
+     	-0.5px -0.5px 0 #A5010A,  
+     	 0.5px -0.5px 0 #A5010A,
+      	-0.5px 0.5px 0 #A5010A,
+      	 0.5px 0.5px 0 #A5010A;
+}
+
+section img:hover, aside img:hover {
+	opacity: 0.8;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+
+}
+
+#photo1 {
+	width: 30%;
+	height: auto;
+	padding: 10px;
+	float: left;
+}
+
+#photo2 {
+	width: 20%;
+	height: auto;
+	padding: 10px;
+	float: right;
+}
+
+#photo3 {
+	width: 32%;
+	height: auto;
+	padding: 10px;
+	float: left;
+}
+
+#photo4 {
+	width: 30%;
+	height: auto;
+	float: right;
+	padding: 10px;
+}
+
+#photo5 {
+	width: 30%;
+	height: auto;
+	float: left;
+	padding: 10px;
+}
+
+#photo6 {
+	width: 30%;
+	height: auto;
+	float: right;
+	padding: 10px;
+
+}
+
+aside h3 {
+	width: 100%;
+	text-align: center;
+	color: #A5010A;
+	font-weight: bolder;
+	margin-top: 30px;
+	text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+}
+
+#sidephoto {
+	width: 180px;
+	height: auto;
+	padding: 5px 10px;
+	display: block;
+	margin-bottom: 20px;
+}
+
+a p {
+	margin: 0;
+	padding: 0;
+	line-height: 1.4em;
+	text-align: center;
+}
+
+footer p {
+	font-style: normal;
+	font-size: 0.9em;
+	margin: 0;
+	text-align: left;
+	padding: 0px 10px;
+}
+
+footer a{
+	text-decoration: none;
+	color:#F5BC4E;
+}
+
+footer a:hover {
+	color: orange;
+	font-size: 1em;
+	text-decoration: underline;
+}
+
+
+/*kada je velicina ekrana 600-800px*/
+@media screen and (min-width: 600px) {
+	body {
+		font-size: 14px;
+		width: 90%;
+	}
+    main {
+        position: relative;
+        top: 120px;
+        width: 100%;
+    }
+    section {
+        flex: 80%;
+    }
+    aside {
+        width: 100%;
+        flex-flow: row wrap;
+    }
+
+    #sidephoto {
+		width: 180px;
+		padding: 5px 10px;
+	}
+
+    nav li {
+        display: inline-block;
+    }
+    header {
+        width: 90%;
+        position: fixed;
+        height: 80px;
+        top: 0;
+    }
+    nav {
+        width: 90%;
+        position: fixed;
+       	height: 40px;
+       	top: 80px;
+    }
+    nav a {
+		border-right: 1px solid #F5BC4E;
+	}
+	footer {
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	header img {
+		width: 65px;
+		height: 65px;
+	}
+	nav li {
+		margin: 0;
+		padding: 11px 0px;
+	}
+
+	nav a {
+		padding: 11px 16px;	
+		margin: 0;
+	}
+
+	section p {
+		padding: 0px 15px;
+		text-indent: 20px;
+		line-height: 1.3em;
+	}
+
+	section h3 {
+		padding: 7px 0px;
+		word-spacing: 0.2em;
+		font-size: 1.2em;   
+   	 }
+   	 footer p {
+   	 padding: 0px 10px;
+   	}
+}
+
+	/*za velicinu ekrana > 800px*/
+
+@media screen and (min-width: 800px) {
+	body {
+		font-size: 16px;
+		width: 80%;
+	}
+    main {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        top: 140px;
+        width: 100%;
+    }
+    section {
+        flex: 80%;
+    }
+    aside {
+        flex: 20%; 
+        flex-basis: 200px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    nav li {
+        display: inline-block;
+    }
+    header {
+        width: 80%;
+        position: fixed;
+        height: 100px;
+        top: 0;
+    }
+    nav {
+        width: 80%;
+        height: 40px;
+        top: 100px;
+        position: fixed;
+    }
+	nav a {
+		border-right: 1px solid #F5BC4E;
+	}
+	footer {
+		width: 80%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	address {
+		padding: 10px;
+	}
+	header img {
+		width: 80px;
+		height: 80px;
+	}
+
+	nav li {
+		margin: 0;
+		padding: 11px 0px;
+	}
+
+	nav a {
+		padding: 11px 22px;	
+		margin: 0;
+	}
+
+	section p {
+		padding: 0px 25px;
+		text-indent: 20px;
+		line-height: 1.5em;
+	}
+
+	section h3 {
+		padding: 10px 0px;
+		word-spacing: 0.2em;
+		font-size: 1.3em;
+        
+    }
+ 	footer p {
+		padding: 0px 10px;
+	}
+}
+
+
+
+
+
+
+
