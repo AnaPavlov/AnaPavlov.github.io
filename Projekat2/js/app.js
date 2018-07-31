@@ -1,7 +1,3 @@
-
-//funkcija za dodavanje obaveza i pojedinacno brisanje
-
-
 window.onload = function() {
     if (localStorage.length !== 0) {
         document.getElementById("list").innerHTML = localStorage.getItem("listaUStoridzu");
@@ -26,14 +22,8 @@ window.onload = function() {
         stavka.appendChild(izolujTekstStavke);
         stavka.appendChild(obrisi);
         lista.appendChild(stavka);
-
-        let obrisiKlik = document.getElementsByTagName("strong");
-        for (let i = 0; i < obrisiKlik.length; i++) {
-        obrisiKlik[i].addEventListener("click", function() {
-        this.parentElement.remove();
-        });
-    }
-
+        obrisiStavku();
+         
     } else {
         alert("Prvo morate popuniti polje");
     }
@@ -43,14 +33,7 @@ window.onload = function() {
 
 function dodajUStoridz (lista) {
     localStorage.setItem('listaUStoridzu', lista);
-    obrisiStavku(strong);
-
 }
-
-//obrisi stavku
-
-        
-
 
 function filtriraj() {
     let poljeZaPretragu = document.getElementById("inputFilter");
@@ -63,6 +46,17 @@ function filtriraj() {
   }
 }
 
+function obrisiStavku() {
+    let obrisiKlik = document.getElementsByTagName("strong");
+    for (let i = 0; i < obrisiKlik.length; i++) {
+    obrisiKlik[i].addEventListener("click", function () {
+        this.parentElement.remove();
+        let lista = document.getElementById("list").innerHTML;
+        localStorage.setItem("listaUStoridzu", lista);
+    });
+    } 
+}
+
 function obrisiSve() {
     let potvrda = confirm("Jeste li sigurni da zelite da obrisete sve?");
     let sveStavke = document.getElementsByTagName("li");
@@ -71,8 +65,3 @@ function obrisiSve() {
         localStorage.removeItem("listaUStoridzu");
     }
 }
-
-
-
-
-
