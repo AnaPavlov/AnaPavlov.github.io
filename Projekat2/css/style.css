@@ -9,6 +9,7 @@ body {
     height: auto;
     display: flex;
     flex-direction: column;
+    font-family: 'Jua', sans-serif;
 }
 
 section {
@@ -17,18 +18,31 @@ section {
     padding: 20px 40px;
 }
 
+h1 {
+    font-size: 26px;
+}
+
 input {
     width: 80%;
     border: none;
     border-bottom: 1px solid #ddd;
-    padding: 10px 5px;
+    padding: 10px 10px;
+}
+input[type=number] {
+    margin-top: 5px;
 }
 
-input[type=button] {
+input[type=button], button {
     background-color: #27A797;
     color: white;
     width: 105px;
     padding: 7px; 
+    font-family: 'Jua', sans-serif;
+    font-size: 14px;
+}
+
+#priorityNumber {
+    width: 120px;
 }
 
 hr {
@@ -36,12 +50,12 @@ hr {
     color: #eee;
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
+ol {
+    margin-left: 5px;
+    width: 80%;
 }
 
-ul li:hover {
+ol li:hover {
     background-color: #eee;
   }
 
@@ -56,12 +70,12 @@ li {
 strong {
     cursor: pointer;
     position: absolute;
-     top: 50%;
+    top: 50%;
     right: 0%;
-     padding: 5px 10px;
-     transform: translate(0%, -50%);
+    padding: 5px 10px;
+    transform: translate(0%, -50%);
     color: red;
-     font-size: 20px;
+    font-size: 20px;
 }
 
 strong:hover {
@@ -81,13 +95,18 @@ button {
         width: 70%;
     }
 }
+
 @media screen and (max-width: 600px) {
     body {
         width: 85%;
     }
 }
+
 @media screen and (max-width: 400px) {
     input {
+        width: 95%;
+    }
+    ul {
         width: 95%;
     }
     h1 {
