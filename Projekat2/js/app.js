@@ -1,67 +1,112 @@
-window.onload = function() {
-    if (localStorage.length !== 0) {
-        document.getElementById("list").innerHTML = localStorage.getItem("listaUStoridzu");
-        } else {
-    document.getElementById("list").innerHTML = "";
+let inpAddTask = document.getElementById("inpAddTask");
+let inpPriorityNumber = document.getElementById("inpPriorityNumber");
+let btnAddTask = document.getElementById("btnAddTask");
+let inpFilter = document.getElementById("inpFilter");
+let btnClearTasks = document.getElementById("btnClearTasks");
+let list = document.getElementById("list");
+let localStorageArr = [];
+
+window.onload = function () {
+    checkLocalStorage();
+    btnAddTask.addEventListener("click", addTask);
+    btnClearTasks.addEventListener("click", clearAllTasks);
+    inpFilter.addEventListener("keyup", filterTasks);
+    inpAddTask.addEventListener("keypress", pressEnter);
+    inpPriorityNumber.addEventListener("keypress", enterAddTask);
+};
+
+function pressEnter() {
+    if (event.keyCode == 13) {
+        inpPriorityNumber.focus();
     }
 }
 
-    function dodajObavezu() {
-        let lista = document.getElementById("list");
-        let unetaObaveza = document.getElementById("inputObaveza").value;
-        if (unetaObaveza != "") { 
-        let stavka = document.createElement("li");
-        let tekstStavke = document.createTextNode(unetaObaveza);
-
-        //kreiranje "x" elementa za brisanje stavke
-        let obrisi = document.createElement("strong");
-        let x = document.createTextNode("x");
-        obrisi.appendChild(x);
-        let izolujTekstStavke = document.createElement("span");
-        izolujTekstStavke.appendChild(tekstStavke);
-        stavka.appendChild(izolujTekstStavke);
-        stavka.appendChild(obrisi);
-        lista.appendChild(stavka);
-        obrisiStavku();
-         
-    } else {
-        alert("Prvo morate popuniti polje");
+function enterAddTask() {
+    if (event.keyCode == 13) {
+        addTask();
+        inpAddTask.focus();
     }
-    dodajUStoridz(lista.innerHTML);
-    
 }
 
-function dodajUStoridz (lista) {
-    localStorage.setItem('listaUStoridzu', lista);
+function checkLocalStorage() {
+    if (localStorage.getItem("taskArray")) {
+        obj = JSON.parse(localStorage.getItem("taskArray"));
+        localStorageArr = obj;
+        displayTasks();
+    }
 }
 
-function filtriraj() {
-    let poljeZaPretragu = document.getElementById("inputFilter");
-    let filter = poljeZaPretragu.value.toUpperCase();
-    let sveStavke = document.getElementsByTagName("span");
-    for (i = 0; i < sveStavke.length; i++) {
-        if (sveStavke[i].innerHTML.toUpperCase().indexOf(filter) != -1) {
-            sveStavke[i].parentElement.style.display = "";
-    } else sveStavke[i].parentElement.style.display = "none"
-  }
+function addTask() {
+    let taskObj = {};
+    if (inpAddTask.value != "") {
+        taskObj.name = inpAddTask.value;
+        inpAddTask.value = "";
+
+        if (inpPriorityNumber.value != "") {
+            taskObj.number = inpPriorityNumber.value;
+            inpPriorityNumber.value = "";
+
+            //adding new input to localStorageArr and to LocalStorage
+            localStorageArr.push(taskObj);
+            taskArray = JSON.stringify(localStorageArr);
+            localStorage.setItem("taskArray", taskArray);
+            displayTasks();
+        } else alert("You must enter priority number");
+
+    } else alert("You must enter a task first");
 }
 
-function obrisiStavku() {
-    let obrisiKlik = document.getElementsByTagName("strong");
-    for (let i = 0; i < obrisiKlik.length; i++) {
-    obrisiKlik[i].addEventListener("click", function () {
-        this.parentElement.remove();
-        let lista = document.getElementById("list").innerHTML;
-        localStorage.setItem("listaUStoridzu", lista);
+function displayTasks() {
+    //sorting tasks according to priority numbers
+    let obj = localStorageArr.sort(function (a, b) {
+        return a.number > b.number
     });
-    } 
+    list.innerHTML = "";
+    for (let i = 0; i < obj.length; i++) {
+        let li = document.createElement("li");
+        li.innerHTML = `<span>${obj[i].name}</span>` + `<strong>x</strong>`;
+        list.appendChild(li);
+        let deleteIcon = document.querySelector("strong");
+        deleteIcon.addEventListener("click", deleteTask);
+    }
 }
 
-function obrisiSve() {
-    let potvrda = confirm("Jeste li sigurni da zelite da obrisete sve?");
-    let sveStavke = document.getElementsByTagName("li");
-    if (potvrda === true) {
-        while (sveStavke[0]) sveStavke[0].parentNode.removeChild(sveStavke[0]);
-        localStorage.removeItem("listaUStoridzu");
+function deleteTask(event) {
+    let confirmDelete = confirm("Are you sure you want to delete this task?");
+    if (confirmDelete) {
+        let liTarget = event.currentTarget.parentElement;
+        liTarget.remove();
+
+        let obj = JSON.parse(localStorage.getItem("taskArray"));
+        for (let i = 0; i < obj.length; i++) {
+            if ((liTarget.querySelector("span").innerText) == obj[i].name) {
+                obj.splice(i, 1);
+            }
+        }
+        let array = JSON.stringify(obj);
+        localStorage.setItem("taskArray", array);
+    }
+}
+
+function clearAllTasks() {
+    let confirmDelete = confirm("Are you sure you want to delete all tasks?");
+    if (list.innerHTML != "" && confirmDelete) {
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
+        }
+        localStorage.removeItem("taskArray");
+        localStorageArr = [];
+    }
+}
+
+function filterTasks() {
+    if (list.hasChildNodes) {
+        let liCollection = document.querySelectorAll("span");
+        let inpText = inpFilter.value.toUpperCase();
+        for (let i = 0; i < liCollection.length; i++) {
+            if (liCollection[i].innerText.toUpperCase().indexOf(inpText) != -1) {
+                liCollection[i].parentElement.style.display = "list-item";
+            } else (liCollection[i].parentElement.style.display = "none");
+        }
     }
 }
