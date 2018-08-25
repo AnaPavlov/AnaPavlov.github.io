@@ -4,7 +4,6 @@ let btnAddTask = document.getElementById("btnAddTask");
 let inpFilter = document.getElementById("inpFilter");
 let btnClearTasks = document.getElementById("btnClearTasks");
 let list = document.getElementById("list");
-let localStorageArr = [];
 
 window.onload = function () {
     checkLocalStorage();
@@ -30,8 +29,6 @@ function enterAddTask() {
 
 function checkLocalStorage() {
     if (localStorage.getItem("taskArray")) {
-        obj = JSON.parse(localStorage.getItem("taskArray"));
-        localStorageArr = obj;
         displayTasks();
     }
 }
@@ -46,10 +43,18 @@ function addTask() {
             taskObj.number = inpPriorityNumber.value;
             inpPriorityNumber.value = "";
 
-            //adding new input to localStorageArr and to LocalStorage
-            localStorageArr.push(taskObj);
-            taskArray = JSON.stringify(localStorageArr);
-            localStorage.setItem("taskArray", taskArray);
+            //adding new input to LocalStorage
+
+            if (localStorage.getItem("taskArray")) {
+                let taskArray = JSON.parse(localStorage.getItem("taskArray"));
+                taskArray.push(taskObj);
+                localStorage.setItem("taskArray", JSON.stringify(taskArray));
+            } else {
+                let taskArray = [];
+                taskArray.push(taskObj);
+                localStorage.setItem("taskArray", JSON.stringify(taskArray));
+            }
+
             displayTasks();
         } else alert("You must enter priority number");
 
@@ -58,7 +63,9 @@ function addTask() {
 
 function displayTasks() {
     //sorting tasks according to priority numbers
-    let obj = localStorageArr.sort(function (a, b) {
+    let obj = JSON.parse(localStorage.getItem("taskArray"));
+
+    obj = obj.sort(function (a, b) {
         return a.number > b.number
     });
     list.innerHTML = "";
@@ -66,8 +73,10 @@ function displayTasks() {
         let li = document.createElement("li");
         li.innerHTML = `<span>${obj[i].name}</span>` + `<strong>x</strong>`;
         list.appendChild(li);
-        let deleteIcon = document.querySelector("strong");
-        deleteIcon.addEventListener("click", deleteTask);
+        let deleteIcon = document.querySelectorAll("strong");
+        for (let i = 0; i < deleteIcon.length; i++) {
+            deleteIcon[i].addEventListener("click", deleteTask);
+        }
     }
 }
 
@@ -76,17 +85,18 @@ function deleteTask(event) {
     if (confirmDelete) {
         let liTarget = event.currentTarget.parentElement;
         liTarget.remove();
+        let taskText = liTarget.innerText.substring(0, (liTarget.innerText).length - 1)
 
-        let obj = JSON.parse(localStorage.getItem("taskArray"));
-        for (let i = 0; i < obj.length; i++) {
-            if ((liTarget.querySelector("span").innerText) == obj[i].name) {
-                obj.splice(i, 1);
+        let taskArray = JSON.parse(localStorage.getItem("taskArray"));
+        for (let i = 0; i < taskArray.length; i++) {
+            if ((liTarget.querySelector("span").innerText) == taskArray[i]["name"]) {
+                taskArray.splice(i, 1);
             }
         }
-        let array = JSON.stringify(obj);
-        localStorage.setItem("taskArray", array);
+        localStorage.setItem("taskArray", JSON.stringify(taskArray));
     }
 }
+
 
 function clearAllTasks() {
     let confirmDelete = confirm("Are you sure you want to delete all tasks?");
