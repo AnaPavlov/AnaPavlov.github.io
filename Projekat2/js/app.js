@@ -85,7 +85,6 @@ function deleteTask(event) {
     if (confirmDelete) {
         let liTarget = event.currentTarget.parentElement;
         liTarget.remove();
-        let taskText = liTarget.innerText.substring(0, (liTarget.innerText).length - 1)
 
         let taskArray = JSON.parse(localStorage.getItem("taskArray"));
         for (let i = 0; i < taskArray.length; i++) {
