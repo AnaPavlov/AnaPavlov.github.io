@@ -37,8 +37,7 @@ main {
 		float: left;
 		display: inline-block;
 		background-color: #F9EBBA;
-		margin-bottom: 50px;
-			
+		margin-bottom: 50px;			
 	}
 
 #sidebar {
@@ -111,13 +110,14 @@ nav a {
 
 #dropdown-content {
 	display: none;
-    position: absolute;
+	position: absolute;
 }
 
 #dropdown-content a {
 	font-weight: lighter;
 	border: none;
 	width: 100%;
+	padding: 7.5px;
 }
 
 #dropdown-content li {
@@ -127,13 +127,13 @@ nav a {
    	display: block;
    	background-color: #2e3830;
    	text-align: justify;
-   	width: 200px;
-   	
+   	width: 160px;  	
 }
 
 nav a:hover {
-	background-color: #A5010A;
+	background-color: rgb(233, 24, 35);
 	color: white;
+	opacity: 0.9;
 	transition: .06s ease-in-out;
 }
 
@@ -141,14 +141,12 @@ nav a:hover {
 	display: block;
 }
 
-
 #content p{
 	padding: 0px 25px;
 	text-indent: 20px;
 	text-align: justify;
 	line-height: 1.5em;
 	}
-
 
 #content h3 {
 	padding: 10px 0px;
@@ -168,7 +166,6 @@ nav a:hover {
 	opacity: 0.8;
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
-
 }
 
 #photo1 {
@@ -217,7 +214,6 @@ nav a:hover {
 	float: right;
 	display: inline-block;
 	padding: 10px;
-
 }
 
 #sidebar h3 {
@@ -228,14 +224,13 @@ nav a:hover {
 	text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
 }
 
-#sidephoto {
+.sidephoto {
 	width: 180px;
 	height: auto;
 	padding: 5px 10px;
 	display: block;
 	margin-bottom: 20px;
 }
-
 
 a p {
 	margin: 0;
