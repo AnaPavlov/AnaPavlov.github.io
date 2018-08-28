@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT Bootcamp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body onload="checkLogin(), loadData()">
+        <div class="container">
+            <div class="header">
+                <div class="brand">
+                    IT Bootcamp
+                </div>
+                <div id="navbar">
+                    <a href="home.html">Home</a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div id="errors"></div>
+            <div id="success"></div>
+            <div class="left-sidebar">
+                <div id="user-image"></div>
+                <div id="username"></div>
+                <div class="change-profile-image">
+                    <input type="file" id="profile-image" />
+                    <button onclick="changeProfileImage()">Change Profile Image</button>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="new-feed">
+                    <div class="add-feed">
+                        <input type="text" id="status" placeholder="What is your mind?" />
+                        <button onclick="addStatus()">Share</button>
+                    </div>
+                    <div class="add-image">
+                        <input type="file" id="image" />
+                        <input type="checkbox" id="private"><label for="private">Private</label>
+                        <button onclick="addImage()">Add Image</button>
+                    </div>
+                </div>
+                <div id="feed-list"></div>
+            </div>
+        </div>
+    </body>
+    <script src="js/declare.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/main.js"></script>
+</html>

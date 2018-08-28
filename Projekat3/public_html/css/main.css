@@ -1,0 +1,175 @@
+/*
+* Main CSS style for frontend
+*/
+
+body {
+	margin: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	background-color: #E9EBEE;
+	font-weight: bold;
+}
+.brand {
+    width: 150px;
+    float: left;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.header {
+	background: #435F9C;
+	color: #fff;
+	padding: 20px;
+	height: 40px;
+}
+#login-form {
+	float: right;
+}
+#login-error {
+	height: 15px;
+    font-size: 10px;
+}
+#submit-signin, #submit-signup {
+	color: white;
+	background-color: #365899;
+	border: 1px solid #29487D;
+	width: 70px;
+	height: 20px;
+	border-radius: 10%;
+}
+#user-image img {
+	max-width: 150px;
+}
+.content {
+	padding: 20px;
+}
+#signup-form {
+	float: right;
+	margin-right: 150px;
+	margin-top: 20px;
+}
+#signup-form label {
+	width: 100px;
+	display: inline-block;
+}
+#signup-form .form-group {
+	margin: 10px 0;
+}
+#navbar {
+	float: right;
+	margin-top: 10px;
+}
+#navbar a {
+	color: #fff;
+	text-decoration: none;
+	margin-left: 15px;
+}
+.error-msg {
+    background: #ff6a30;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fdf0e7;
+    font-size: 12px;
+}
+.success-msg {
+	background: #47b947;
+    padding: 10px;
+    border-radius: 5px;
+    color: #eaecea;
+    font-size: 12px;
+}
+.left-sidebar {
+	width: 200px;
+    float: left;
+}
+.feed-body img {
+	max-width: 800px;
+}
+.main-content {
+	display: inline-block;
+    width: calc(100% - 200px);
+}
+.new-feed, #feed-list {
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+.add-feed {
+	width: 250px;
+	float: left;
+	margin-right: 50px;
+	margin-top: 10px;
+}
+#success, #errors{
+	margin-bottom: 20px;
+}
+.feed-content {
+	background: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #e2dede;
+    margin-bottom: 10px;
+}
+.feed-author img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 5px;
+}
+.feed-author a {
+	display: block;
+}
+.feed-author {
+	width: 150px;
+	float: left;
+}
+.created {
+	float: right;
+}
+.feed-body {
+	display: inline-block;
+	width: calc(100% - 200px);
+}
+#image-container {
+    width: 68%;
+    float: left;
+    background: #000;
+    padding: 10px;
+}
+#image {
+	text-align: center;
+	width: 150px;
+	margin-right: 40px;
+}
+#comments {
+	margin-bottom: 20px;
+    height: 200px;
+    overflow-y: scroll;
+}
+#image img {
+	max-width: 800px;
+}
+#image-comments-container {
+	width: 26%;
+    float: right;
+    background: #f5f5f5;
+    padding: 20px;
+}
+.comment-author-image {
+    width: 20px;
+    float: left;
+    margin-right: 10px;
+}
+.comment-datetime {
+    font-size: 11px;
+    margin: 0 0 30px;
+}
+.comment-author-name {
+	font-size: 12px;
+}
+#imgBootcamp {
+	border-radius: 5%;
+}
+.content input {
+	border: 1px solid #BDC7D8;
+	border-radius: 5px;
+	height: 25px;
+}
+.content input[type="file"] {
+	border: none;
+}
