@@ -71,19 +71,19 @@ function displayTasks() {
     list.innerHTML = "";
     for (let i = 0; i < obj.length; i++) {
         let li = document.createElement("li");
-        li.innerHTML = `<span>${obj[i].name}</span>` + `<strong>x</strong>`;
+        li.innerHTML = `<span>${obj[i].name}</span>` + `<strong onclick="deleteTask(this)">x</strong>`;
         list.appendChild(li);
-        let deleteIcon = document.querySelectorAll("strong");
-        for (let i = 0; i < deleteIcon.length; i++) {
-            deleteIcon[i].addEventListener("click", deleteTask);
-        }
+//         let deleteIcon = document.querySelectorAll("strong");
+//         for (let i = 0; i < deleteIcon.length; i++) {
+//             deleteIcon[i].addEventListener("click", deleteTask);
+//         }
     }
 }
 
-function deleteTask(event) {
+function deleteTask(deleteIcon) {
     let confirmDelete = confirm("Are you sure you want to delete this task?");
     if (confirmDelete) {
-        let liTarget = event.currentTarget.parentElement;
+        let liTarget = deleteIcon.parentElement;
         liTarget.remove();
 
         let taskArray = JSON.parse(localStorage.getItem("taskArray"));
